@@ -33,6 +33,7 @@ class TaskData extends ChangeNotifier {
     var index = list.indexWhere((x) => x.name == task.name);
     list[index].isDone = !(list[index].isDone);
     print('toggled ${task.name}');
+
     saveTasks();
     notifyListeners(); //importent
   }
