@@ -1,8 +1,6 @@
 import 'dart:collection';
 import 'dart:convert';
 import 'package:todo_app/models/store_data.dart';
-
-import 'task.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:todo_app/models/task.dart';
@@ -47,32 +45,12 @@ class TaskData extends ChangeNotifier {
   }
 
   void saveTasks() {
-    //task-list to string-list
-    // List<String> tasksInString = [];
-    // for (var item in data) {
-    //   tasksInString.add(taskToJson(item));
-    // }
-    // StoreData.setList(tasksInString);
-    // print('saving => $tasksInString');
-
     List<String> spList = list.map((item) => taskToJson(item)).toList();
     StoreData.setList(spList);
     print('saving => $spList');
   }
 
   void getSavedTasks() {
-    //get stored string-list
-    // List<String>? taskInStingStored = StoreData.getList();
-
-    // //string-list to task-list
-    // List<Task> backToTasks = [];
-    // for (var item in taskInStingStored!) {
-    //   Task jsonToTask = Task.fromJson(json.decode(item));
-    //   backToTasks.add(jsonToTask);
-    // }
-    // // print(backToTasks);
-    // list = backToTasks;
-
     List<String>? spList = StoreData.getList();
     list = spList!.map((item) => Task.fromJson(json.decode(item))).toList();
   }
